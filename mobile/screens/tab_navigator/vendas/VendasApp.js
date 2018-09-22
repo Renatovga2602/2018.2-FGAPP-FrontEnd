@@ -1,40 +1,31 @@
 import React, { Component } from "react";
-import { 
+import {
     View,
     Text,
     StyleSheet,
-    TouchableOpacity,
-    Alert
+    Button
 } from "react-native";
-
+// import ProductDelete from './product_delete'
 
 class VendasApp extends Component {
-
-    handlePress = async () => {
-
-            fetch(process.env.VENDAS_API + 'api/books', {
-                method: 'GET',
-                headers: {
-                'Content-Type': 'application/json',
-                }
-        })
-            .then((response) => response.json())
-            .then((responseJson) => {
-        Alert.alert("Title: " + responseJson.title + ", with price " + responseJson.price + "\n" +  process.env.VENDAS_API + 'api/books');
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
-
-    render(){
-        return(
-            <View style={{paddingTop: 50, paddingLeft: 50 }}>
-            <Text> Vendas APP </Text>
-            <TouchableOpacity onPress={this.handlePress.bind(this)}>
-            <Text style={{paddingTop: 50, paddingLeft: 50, color: '#FF0000'}}> Clica em mim para testar api mocada </Text>
-            </TouchableOpacity>
-        </View> 
+  _onPressButton = async () => {
+    fetch('http://IP:5000/api/product_delete', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'product_id': '13',
+        'fk_vendor': '1',
+      }),
+    })
+  }
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text>VendasApp</Text>
+                <Button title='Delete' onPress={this._onPressButton}/>
+            </View>
         );
     }
 }
