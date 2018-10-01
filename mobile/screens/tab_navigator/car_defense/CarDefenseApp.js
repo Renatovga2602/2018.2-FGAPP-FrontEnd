@@ -9,6 +9,7 @@ import {
 import PublicNotifications from './screens/TabNavigator/PublicNotifications/PublicNotifications'
 import PrivateNotifications from './screens/TabNavigator/PrivateNotifications/PrivateNotifications'
 import Feed from './screens/Feed'
+import PrivateFeed from './screens/TabNavigator/PrivateFeed/PrivateFeed'
 import RegisterCar from './screens/TabNavigator/RegisterCar/RegisterCar'
 import {StackNavigator} from 'react-navigation'
 import CarDefenseTabHandler from './CarDefenseTabHandler'
