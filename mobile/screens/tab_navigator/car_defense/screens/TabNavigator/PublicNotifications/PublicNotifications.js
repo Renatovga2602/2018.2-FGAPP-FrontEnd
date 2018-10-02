@@ -47,6 +47,7 @@ export default class PublicNotifications extends Component {
         }).then(response => { return response.json() }
         ).then(jsonResponse => {
             console.log(jsonResponse);
+            Alert.alert("Alerta enviado!")
         }
         ).catch(error => {
             console.log(error)
@@ -58,7 +59,6 @@ export default class PublicNotifications extends Component {
             <ScrollView>
                 <View style={styles.container}>
                     <Text style={styles.header}>Alerta Geral</Text>
-
                     <Text style={styles.header2}> Descrição</Text>
                     <TextInput
                         style={styles.input1}

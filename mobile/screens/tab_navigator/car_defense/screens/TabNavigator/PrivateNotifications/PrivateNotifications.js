@@ -78,9 +78,11 @@ export default class PrivateNotifications extends Component {
     }).then(response => { return response.json() }
     ).then(jsonResponse => {
       console.log(jsonResponse);
+      Alert.alert("Notificação enviada!")
     }
     ).catch(error => {
       console.log(error)
+      Alert.alert("Placa não existe!")
     })
 
   }
@@ -121,7 +123,7 @@ export default class PrivateNotifications extends Component {
 const styles = StyleSheet.create({
   container: {},
   container1: {
-    marginTop: 100
+    marginTop: 80
   },
   header: {
     color: '#5c68c3',

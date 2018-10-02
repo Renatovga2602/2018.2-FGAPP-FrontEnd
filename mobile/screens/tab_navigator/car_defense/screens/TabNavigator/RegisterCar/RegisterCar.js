@@ -123,9 +123,11 @@ export default class RegisterCar extends Component {
     }).then(response => { return response.json() }
     ).then(jsonResponse => {
       console.log(jsonResponse);
+      Alert.alert("Veículo cadastrado!")
     }
     ).catch(error => {
       console.log(error)
+      Alert.alert("Veículo não cadastrado")
     })
 
   }
@@ -133,7 +135,14 @@ export default class RegisterCar extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh}
+          />
+        }
+      >
         <View style={styles.container}>
           <Text style={styles.header}> Cadastrar carro</Text>
           <TextInput
@@ -165,12 +174,6 @@ export default class RegisterCar extends Component {
             keyExtractor={({ id }, index) => id}
           />
         </View>
-        refreshControl={
-          <RefreshControl
-            refreshing={this.state.refreshing}
-            onRefresh={this._onRefresh}
-          />
-        }
       </ScrollView>
     );
   }
@@ -211,6 +214,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     margin: 4,
     padding: 20,
+    borderRadius: 10,
     shadowColor: "#000000",
     shadowOpacity: 0.8,
     shadowRadius: 2,

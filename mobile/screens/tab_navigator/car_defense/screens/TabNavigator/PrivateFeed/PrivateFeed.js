@@ -83,7 +83,14 @@ export default class Feed extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.item}>
+      <ScrollView style={styles.item}
+      refreshControl={
+        <RefreshControl
+          refreshing={this.state.refreshing}
+          onRefresh={this._onRefresh}
+        />
+      }
+      >
         <FlatList
           data={this.state.dataSource}
           renderItem={({ item }) => {
@@ -92,17 +99,10 @@ export default class Feed extends React.Component {
                 <Text style={styles.text1}>{item.title}</Text>
                 <Text style={styles.text}>{item.message}</Text>
               </View>
-            );
+            )
           }}
           keyExtractor={({ id }, index) => id.toString()}
-          
         />
-        refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh}
-            />
-          }
       </ScrollView>
     );
   }
@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     flexGrow: 1,
     margin: 4,
-    padding: 20,
     shadowColor: "#000000",
     shadowOpacity: 0.8,
     shadowRadius: 2,
@@ -124,11 +123,13 @@ const styles = StyleSheet.create({
     elevation: 4
   },
   item2: {
-    alignItems: 'center',
+    alignItems: "center",
+    justifyContent:'center',
     backgroundColor: "#ffffff",
     flexGrow: 1,
     margin: 4,
     padding: 20,
+    borderRadius:10,
     shadowColor: "#000000",
     shadowOpacity: 0.8,
     shadowRadius: 2,
@@ -144,6 +145,6 @@ const styles = StyleSheet.create({
   },
   text1: {
     color: "#5c68c3",
-    fontWeight: '200',
+    fontWeight: 'bold',
   }
 });

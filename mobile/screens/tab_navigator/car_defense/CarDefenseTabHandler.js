@@ -47,7 +47,7 @@ const CarDefenseTabStackNavigator = new TabNavigator({
     PrivateFeed:{
         screen:PrivateFeed,
         navigationOptions:{
-            tabBarLabel:'Feed',
+            tabBarLabel:'Feed Privado',
             headerLeft: null,
         }
     },
