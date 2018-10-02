@@ -44,7 +44,7 @@ export default class Feed extends React.Component {
       token: tk
     })
 
-    fetch(process.env.CARDEFENSE_PROFILE + '/set_notification_token', {
+    fetch('http://68.183.28.199:8005/set_notification_token', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -59,7 +59,7 @@ export default class Feed extends React.Component {
       console.log(error)
     })
 
-    return fetch(process.env.CARDEFENSE_NOTIFICATIONS + '/emergencynotifications/')
+    return fetch('http://68.183.28.199:8002/emergencynotifications/')
       .then((response) => response.json())
       .then((responseJson) => {
 
