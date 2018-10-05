@@ -9,6 +9,8 @@ import {
 export default class Local extends Component {
   constructor(props) {
     super(props);
+    console.log('PROPS')
+    console.log(props)
     
   }
   render() {

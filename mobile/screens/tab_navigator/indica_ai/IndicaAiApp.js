@@ -1,52 +1,18 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Dimensions,
-  PixelRatio,
-  ScrollView
-} from "react-native";
-import SearchBar from "./containers/searchBar";
+import SearchLocal from "./components/SearchLocal";
 import { Provider } from "react-redux";
 import store from "./redurces/store";
-import ListLocals from './containers/ListLocals'
-
-state = {
-  localName: "SHOW_ALL"
-};
 
 
-class FirstScreen extends Component {
+class SearchScreen extends Component {
   render() {
     return (
-        <View style={styles.container}>
-          <Provider store={store}>
-            <SearchBar />  
-          </Provider>
-          <Provider store={store}>
-            <ListLocals locals={store.getState().searchBar}/>
-          </Provider>
-        </View>
+        <Provider store={store}>
+            <SearchLocal />
+        </Provider>
     );
   }
 }
 
-const mapStateToProps = () => {
-  console.log(store.getState()); 
-  return {
-    searchBar: {} 
-  };
-};
+export default SearchScreen;
 
-export default FirstScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    backgroundColor: "#FFF"
-  }
-});
